@@ -1,0 +1,46 @@
+.occupied  {
+    background-color: red !important;
+    color: white
+}
+.occupied:hover {
+    background-color: red !important;
+}
+.reserve {
+    background-color: yellow !important;
+    color: white
+}
+.reserve:hover {
+    background-color: yellow !important;
+}
+#box {
+    width: 35px;
+    height: 35px;
+    border: 1px solid grey;
+    border-radius: 6px;
+    background-color: #f4f4f4;
+    color: grey;
+}
+#boxs {
+    width: 35px;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+#box:hover {
+    background-color: #7abacf;
+}
+#status {
+    color: #ffc700;
+    font-weight: 200;
+}
+.container {
+    justify-content: center;
+}
+#background {
+    background-image: url("/assets/2.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    background-color: #66b567;  
+}
