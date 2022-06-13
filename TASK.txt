@@ -9,3 +9,21 @@ new table sa map - done
 
 viewing for map only - http://127.0.0.1:8000/map-user
 design for 1366 x 768 - done
+
+
+
+
+-pweding magkapatong sa iisang lapida maximum of 2
+	
+select typy of lot
+Lawn Lot
+Two Lawn Lot
+Memorial Garden
+Single Niche
+Junior Estate
+Senior Estate
+
+-tanggalin yung date
+-middle initita
+-lot_id
+-remove back button

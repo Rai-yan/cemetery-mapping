@@ -28,9 +28,7 @@
         @csrf
     </form>
 
-    @if (Auth::user()->role == 'admin')
-        <a class="btn btn-primary btn-sm" style="color: white;" href="/home">Back</a>
-    @endif
+
 
     <h5 style="float: right; color: white; font-size: 20px">{{ Auth::user()->email }}</h5>
 
@@ -1172,7 +1170,7 @@
     }
 </script>
 <style>
-    @media screen and (max-width: 1366px) {
+    @media screen and (max-width: 1700px) {
     .occupied  {
         background-color: red !important;
         color: white !important;

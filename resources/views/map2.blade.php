@@ -28,9 +28,7 @@
         @csrf
     </form>
 
-    @if (Auth::user()->role == 'admin')
-        <a class="btn btn-primary btn-sm" style="color: white;" href="/home">Back</a>
-    @endif
+
 
     <h5 style="float: right; color: white; font-size: 20px">{{ Auth::user()->email }}</h5>
 
@@ -822,7 +820,7 @@
                                             <th>Born date</th>
                                             <th>Die date</th>
                                             <th>Block no</th>
-                                            <!-- <th>Actions</th> -->
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <!-- <tfoot>
@@ -847,14 +845,10 @@
                                             <td>{!! date('M d, Y, h:i A', strtotime($people->born_date)) !!}</td>
                                             <td>{!! date('M d, Y, h:i A', strtotime($people->die_date)) !!}</td>
                                             <td>{{ $people->block_no }}</td>
-                                            <!-- <td>
-                                                <a href="/accept/{{ $people->cemetery_no }}" class="btn btn-primary btn-icon-split btn-sm">
-                                                <span class="text">Accept</span></a>
-                                                <a href="/denied/{{ $people->cemetery_no }}" class="btn btn-danger btn-icon-split btn-sm">
-                                                <span class="text">Denied</span></a>
+                                            <td>
                                                 <a onclick="edit({{ $people->cemetery_no }})" class="btn btn-warning btn-icon-split btn-sm">
                                                 <span class="text" style="color: white">Edit</span></a>
-                                            </td> -->
+                                            </td>
                                         </tr>
                                        @endforeach
                                     </tbody>
@@ -1172,7 +1166,7 @@
     }
 </script>
 <style>
-    @media screen and (max-width: 1366px) {
+    @media screen and (max-width: 1700px) {
     .occupied  {
         background-color: red !important;
         color: white !important;

@@ -1024,7 +1024,7 @@
     }
 </script>
 <style>
-    @media screen and (max-width: 1366px) {
+    @media screen and (max-width: 1700px) {
     .occupied  {
         background-color: red !important;
         color: white !important;
