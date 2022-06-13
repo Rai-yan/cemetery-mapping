@@ -19,8 +19,13 @@ Route::get('/', function () {
 });
 
 Route::get('/map', [MappingController::class, 'map']);
+Route::get('/map-2', [MappingController::class, 'map2']);
+Route::get('/map-user', [MappingController::class, 'mapUser']);
 Route::get('/cemetery', [MappingController::class, 'cemetery'])->name('cemetery');
 Route::get('/people/{cemetery_no}', [MappingController::class, 'getOnePeople'])->name('getOnePeople');
+Route::post('/update', [MappingController::class, 'update']);
+Route::get('/edit/{cemetery_no}', [MappingController::class, 'edit'])->name('edit');
+Route::post('/update', [MappingController::class, 'update']);
 Route::post('/reserve', [MappingController::class, 'reserve']);
 
 Auth::routes();

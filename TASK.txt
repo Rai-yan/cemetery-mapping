@@ -1,0 +1,11 @@
+blue pag si admin
+then red yung occupied
+
+back para mkita yung mga list
+
+edit sa deceased - done
+new table sa map - done
+
+
+viewing for map only - http://127.0.0.1:8000/map-user
+design for 1366 x 768 - done

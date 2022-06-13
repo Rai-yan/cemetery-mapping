@@ -807,8 +807,8 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <input type="hidden" value="{{ url()->full() }}" id="url">
-                            <a href="/map-2" class="btn btn-primary" style="float: right" id="route">Deceased Person</a>
-                            <h6 class="m-0 font-weight-bold text-primary" id="url_name">Request List</h6>
+                            <a href="/map" class="btn btn-primary" style="float: right" id="route">Request</a>
+                            <h6 class="m-0 font-weight-bold text-primary" id="url_name">Person List</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -822,7 +822,7 @@
                                             <th>Born date</th>
                                             <th>Die date</th>
                                             <th>Block no</th>
-                                            <th>Actions</th>
+                                            <!-- <th>Actions</th> -->
                                         </tr>
                                     </thead>
                                     <!-- <tfoot>
@@ -847,14 +847,14 @@
                                             <td>{!! date('M d, Y, h:i A', strtotime($people->born_date)) !!}</td>
                                             <td>{!! date('M d, Y, h:i A', strtotime($people->die_date)) !!}</td>
                                             <td>{{ $people->block_no }}</td>
-                                            <td>
+                                            <!-- <td>
                                                 <a href="/accept/{{ $people->cemetery_no }}" class="btn btn-primary btn-icon-split btn-sm">
                                                 <span class="text">Accept</span></a>
                                                 <a href="/denied/{{ $people->cemetery_no }}" class="btn btn-danger btn-icon-split btn-sm">
                                                 <span class="text">Denied</span></a>
                                                 <a onclick="edit({{ $people->cemetery_no }})" class="btn btn-warning btn-icon-split btn-sm">
                                                 <span class="text" style="color: white">Edit</span></a>
-                                            </td>
+                                            </td> -->
                                         </tr>
                                        @endforeach
                                     </tbody>

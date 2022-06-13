@@ -20,28 +20,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body id="background">
-    <a class="btn btn-warning btn-sm" style="color: white" href="{{ route('logout') }}"
-        onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-        {{ __('Logout') }}</a>
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-        @csrf
-    </form>
-
-    @if (Auth::user()->role == 'admin')
-        <a class="btn btn-primary btn-sm" style="color: white;" href="/home">Back</a>
-    @endif
-
-    <h5 style="float: right; color: white; font-size: 20px">{{ Auth::user()->email }}</h5>
 
     <div class="container" style="margin-top: 50px">
        
-        @if(Session::has('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>{{Session::get('success')}} </strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
+
         <div class="d-flex align-items-center" >
             <div id="boxs" style="text-align: center; border-top: 0; border-left: 0; border-bottom: 0; border-right: 0;"></div>
             <div id="boxs" style="text-align: center; border-top: 0; border-left: 0; border-bottom: 0; border-right: 0;"></div>
@@ -807,8 +789,8 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <input type="hidden" value="{{ url()->full() }}" id="url">
-                            <a href="/map-2" class="btn btn-primary" style="float: right" id="route">Deceased Person</a>
-                            <h6 class="m-0 font-weight-bold text-primary" id="url_name">Request List</h6>
+                            <a href="/map" class="btn btn-primary" style="float: right" id="route">Request</a>
+                            <h6 class="m-0 font-weight-bold text-primary" id="url_name">Person List</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -822,7 +804,7 @@
                                             <th>Born date</th>
                                             <th>Die date</th>
                                             <th>Block no</th>
-                                            <th>Actions</th>
+                                            <th id="action">Actions</th>
                                         </tr>
                                     </thead>
                                     <!-- <tfoot>
@@ -847,7 +829,7 @@
                                             <td>{!! date('M d, Y, h:i A', strtotime($people->born_date)) !!}</td>
                                             <td>{!! date('M d, Y, h:i A', strtotime($people->die_date)) !!}</td>
                                             <td>{{ $people->block_no }}</td>
-                                            <td>
+                                            <td id="actions">
                                                 <a href="/accept/{{ $people->cemetery_no }}" class="btn btn-primary btn-icon-split btn-sm">
                                                 <span class="text">Accept</span></a>
                                                 <a href="/denied/{{ $people->cemetery_no }}" class="btn btn-danger btn-icon-split btn-sm">
@@ -1060,7 +1042,8 @@
     function show_sidebar6() { $('#six').addClass('none'); }
     function hide_sidebar6() { $('#six').removeClass('none'); }
 
-    // var res = $('#url').val().split('/')[4];
+    var res = $('#url').val().split('/')[4];
+    console.log(res)
     // if (res == "request") {
     //     $('#url_name').text("Request");
     //     $("#route").attr("href", "/map/index");
@@ -1078,7 +1061,6 @@
             type: "GET",
             success: function(response) {
                 response.forEach(element => {
-                    console.log(element)
                     if (element.status == 'occupied') {
                         $(".box"+element.cemetery_no).addClass('occupied');
                     } else {
@@ -1130,24 +1112,7 @@
                 }
             });
         } else {
-            $('#no').text(number)
-            $('#cemetery_no').val(number)
-            $('#block_no').val(number)
-            $("#exampleModal").modal('show');
-
-            if (number <= 61) {
-                $('#block_no').val('1')
-            } else if (number > 61 && number < 141) {
-                $('#block_no').val('2')
-            } else if (number > 140 && number < 235) {
-                $('#block_no').val('3')
-            } else if (number > 234 && number < 289) {
-                $('#block_no').val('4')
-            } else if (number > 288 && number < 376) {
-                $('#block_no').val('5')
-            } else {
-                $('#block_no').val('6')
-            }
+            
         }
     }
 
@@ -1168,7 +1133,6 @@
                 $('#cemetery_no1').val(number);
             }
         });
-        console.log(number)
     }
 </script>
 <style>

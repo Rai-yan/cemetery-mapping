@@ -12,6 +12,7 @@ class Cemetery extends Model
 
     protected $fillable = [
         'cemetery_no',
-        'status'
+        'status',
+        'created_by'
     ];
 }
