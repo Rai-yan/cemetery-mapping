@@ -760,109 +760,7 @@
         </div>
     </div>
 
-    @if ( Auth::user()->role == 'admin')
-    <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content"  >
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid" style="margin-top: 200px">
-                @if(Session::has('success2'))
-                <div class="alert alert-success" role="alert">
-                    {{Session::get('success2')}}
-                </div>
-                @endif
-
-                @if(Session::has('delete'))
-                <div class="alert alert-danger" role="alert">
-                    {{Session::get('delete')}}
-                </div>
-                @endif
-
-                @if(Session::has('update'))
-                <div class="alert alert-success" role="alert">
-                    {{Session::get('update')}}
-                </div>
-                @endif
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <input type="hidden" value="{{ url()->full() }}" id="url">
-                            <a href="/map" class="btn btn-primary" style="float: right" id="route">Request</a>
-                            <h6 class="m-0 font-weight-bold text-primary" id="url_name">Person List</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <!-- <th>User image</th> -->
-                                            <th>First name</th>
-                                            <th>Last name</th>
-                                            <th>Grave no</th>
-                                            <th>Born date</th>
-                                            <th>Die date</th>
-                                            <th>Block no</th>
-                                            <th id="action">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <!-- <tfoot>
-                                        <tr>
-                                            <th>User image</th>
-                                            <th>First name</th>
-                                            <th>Last name</th>
-                                            <th>Grave no</th>
-                                            <th>Born date</th>
-                                            <th>Die date</th>
-                                            <th>Block no</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </tfoot> -->
-                                    <tbody>
-                                        @foreach ($peoples as $people)
-                                        <tr>
-                                            <!-- <td><img src='{{ asset("storage/people/$people->user_image") }}' alt="" width="100"></td> -->
-                                            <td>{{ $people->first_name }}</td>
-                                            <td>{{ $people->last_name }}</td>
-                                            <td>{{ $people->cemetery_no }}</td>
-                                            <td>{!! date('M d, Y, h:i A', strtotime($people->born_date)) !!}</td>
-                                            <td>{!! date('M d, Y, h:i A', strtotime($people->die_date)) !!}</td>
-                                            <td>{{ $people->block_no }}</td>
-                                            <td id="actions">
-                                                <a href="/accept/{{ $people->cemetery_no }}" class="btn btn-primary btn-icon-split btn-sm">
-                                                <span class="text">Accept</span></a>
-                                                <a href="/denied/{{ $people->cemetery_no }}" class="btn btn-danger btn-icon-split btn-sm">
-                                                <span class="text">Denied</span></a>
-                                                <a onclick="edit({{ $people->cemetery_no }})" class="btn btn-warning btn-icon-split btn-sm">
-                                                <span class="text" style="color: white">Edit</span></a>
-                                            </td>
-                                        </tr>
-                                       @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- /.container-fluid -->
-
-            </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <!-- <span>Copyright &copy; Your Website 2020</span> -->
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
-
-        </div>
-        @endif
+   
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -1042,18 +940,8 @@
     function show_sidebar6() { $('#six').addClass('none'); }
     function hide_sidebar6() { $('#six').removeClass('none'); }
 
-    var res = $('#url').val().split('/')[4];
-    console.log(res)
-    // if (res == "request") {
-    //     $('#url_name').text("Request");
-    //     $("#route").attr("href", "/map/index");
-    //     $('#route').text("Request");
-    // } else {
-    //     $('#url_name').text("Deceased Person");
-    // }
-    // console.log(res)
-
-    // hide_sidebar
+ 
+   
 
     function reserve() {
         $.ajax({
