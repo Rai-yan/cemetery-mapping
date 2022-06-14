@@ -18,6 +18,10 @@ class People extends Model
         'grave_no',
         'born_date',
         'die_date',
-        'block_no'
+        'block_no',
+        'status',
+        'created_by',
+        'type_of_lot',
+        'middile_name'
     ];
 }

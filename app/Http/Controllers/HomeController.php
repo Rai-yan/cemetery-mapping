@@ -26,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::user()->role == 'admin') {
+            return redirect('/map');
             $peoples = People::join('cemetery', function ($query) {
                 $query->on('cemetery.cemetery_no', '=', 'peoples.cemetery_no');
             })

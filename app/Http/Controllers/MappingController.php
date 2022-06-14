@@ -16,11 +16,7 @@ class MappingController extends Controller
         // } else {
         //     $option = 'occupied';
         // }
-        $peoples = People::join('cemetery', function ($query) {
-            $query->on('cemetery.cemetery_no', '=', 'peoples.cemetery_no');
-        })
-        ->where('cemetery.status', 'reserve')
-        ->get();
+        $peoples = People::where('status', 'reserve')->get();
         return view('map', ['peoples' => $peoples]);
     }
 
@@ -31,11 +27,7 @@ class MappingController extends Controller
         // } else {
         //     $option = 'occupied';
         // }
-        $peoples = People::join('cemetery', function ($query) {
-            $query->on('cemetery.cemetery_no', '=', 'peoples.cemetery_no');
-        })
-        ->where('cemetery.status', 'occupied')
-        ->get();
+        $peoples = People::where('status', 'occupied')->get();
         return view('map2', ['peoples' => $peoples]);
     }
 
@@ -46,12 +38,11 @@ class MappingController extends Controller
 
     public function cemetery()
     {
-        return Cemetery::get();
+        return People::get();
     }
 
     public function reserve(Request $request)
     {
-        
         // $request->validate([
         //     'file_name' => 'max:2000 | mimes:jpeg,png,jpg,docx,pdf,xlsx',
         // ]);
@@ -70,19 +61,23 @@ class MappingController extends Controller
             'first_name' => $request->firstname,
             'last_name' => $request->lastname,
             'user_image' => $filename,
-            'born_date' => $request->born_date." ".date('H:i:s'),
-            'die_date' => $request->die_date." ".date('H:i:s'),
+            'born_date' => date('Y-m-d H:i:s'),
+            'die_date' => date('Y-m-d H:i:s'),
             'block_no' => $request->block_no,
-            'grave_no' => 0
+            'grave_no' => 0,
+            'status' => 'reserve',
+            'created_by' => Auth::user()->role,
+            'type_of_lot' => $request->lot,
+            'middle_name' => $request->middlename
         ]);
 
-        if ($people) {
-            Cemetery::insert([
-                'cemetery_no' => $request->cemetery_no,
-                'status' => 'reserve',
-                'created_by' => Auth::user()->role
-            ]);
-        }
+        // if ($people) {
+        //     Cemetery::insert([
+        //         'cemetery_no' => $request->cemetery_no,
+        //         'status' => 'reserve',
+        //         'created_by' => Auth::user()->role
+        //     ]);
+        // }
 
         return back()->with('success', 'Succesfully reserve !!');
     }
@@ -90,12 +85,18 @@ class MappingController extends Controller
     public function getOnePeople(Request $request, $cemetery_no)
     {
         $people = People::where('cemetery_no', $cemetery_no)->get();
+        return $people;
+    }
+
+    public function editOnePeople(Request $request, $cemetery_no)
+    {
+        $people = People::where('id', $cemetery_no)->get();
         return $people[0];
     }
 
     public function accept(Request $request, $cemetery_no)
     {
-        Cemetery::where('cemetery_no', $cemetery_no)
+        People::where('id', $cemetery_no)
         ->update([
             'status' => 'occupied'
         ]);
@@ -104,25 +105,25 @@ class MappingController extends Controller
 
     public function denied(Request $request, $cemetery_no)
     {
-        People::where('cemetery_no', $cemetery_no)->delete();
+        People::where('id', $cemetery_no)->delete();
         Cemetery::where('cemetery_no', $cemetery_no)->delete();
         return back()->with('delete', 'Delete succesfully !!');
     }
 
     public function edit(Request $request, $cemetery_no)
     {
-        $people = People::where('cemetery_no', $cemetery_no)->get();
+        $people = People::where('id', $cemetery_no)->get();
         return $people[0];
     }
 
     public function update(Request $request)
     {
-        $people = People::where('cemetery_no', $request->cemetery_no)
+        $people = People::where('id', $request->cemetery_no)
         ->update([
             'first_name' => $request->firstname,
             'last_name' => $request->lastname,
-            'born_date' => $request->born_date." ".date('H:i:s'),
-            'die_date' => $request->die_date." ".date('H:i:s'),
+            'type_of_lot' => $request->lot,
+            'middle_name' => $request->middlename
         ]);
         return back()->with('update', 'Update succesfully !!');
     }
