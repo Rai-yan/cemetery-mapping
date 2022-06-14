@@ -33,6 +33,109 @@
     <h5 style="float: right; color: white; font-size: 20px">{{ Auth::user()->email }}</h5>
 
     <div class="container" style="margin-top: 50px">
+
+    @if ( Auth::user()->role == 'admin')
+    <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content"  >
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                @if(Session::has('success2'))
+                <div class="alert alert-success" role="alert">
+                    {{Session::get('success2')}}
+                </div>
+                @endif
+
+                @if(Session::has('delete'))
+                <div class="alert alert-danger" role="alert">
+                    {{Session::get('delete')}}
+                </div>
+                @endif
+
+                @if(Session::has('update'))
+                <div class="alert alert-success" role="alert">
+                    {{Session::get('update')}}
+                </div>
+                @endif
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <input type="hidden" value="{{ url()->full() }}" id="url">
+                            <a href="/map" class="btn btn-primary" style="float: right" id="route">Request</a>
+                            <h6 class="m-0 font-weight-bold text-primary" id="url_name">Person List</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <!-- <th>User image</th> -->
+                                            <th>First name</th>
+                                            <th>Last name</th>
+                                            <th>Middle name</th>
+                                            <th>Grave no</th>
+                                            <th>Date Acquired</th>
+                                            <th>Block no</th>
+                                            <th>Type of Lot</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <!-- <tfoot>
+                                        <tr>
+                                            <th>User image</th>
+                                            <th>First name</th>
+                                            <th>Last name</th>
+                                            <th>Grave no</th>
+                                            <th>Born date</th>
+                                            <th>Die date</th>
+                                            <th>Block no</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </tfoot> -->
+                                    <tbody>
+                                        @foreach ($peoples as $people)
+                                        <tr>
+                                            <!-- <td><img src='{{ asset("storage/people/$people->user_image") }}' alt="" width="100"></td> -->
+                                            <td>{{ $people->first_name }}</td>
+                                            <td>{{ $people->last_name }}</td>
+                                            <td>{{ $people->middle_name }}</td>
+                                            <td>{{ $people->cemetery_no }}</td>
+                                            <td>{!! date('M d, Y', strtotime($people->born_date)) !!}</td>
+                                            <td>{{ $people->block_no }}</td>
+                                            <td>{{ $people->type_of_lot }}</td>
+                                            <td>
+                                                <a onclick="edit({{ $people->id }})" class="btn btn-primary btn-icon-split btn-sm">
+                                                <span class="text" style="color: white">Edit</span></a>
+                                            </td>
+                                        </tr>
+                                       @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <!-- <span>Copyright &copy; Your Website 2020</span> -->
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        @endif
+
        
         @if(Session::has('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -40,7 +143,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
-        <div class="d-flex align-items-center" >
+        <div class="d-flex align-items-center" style="margin-top: 50px">
             <div id="boxs" style="text-align: center; border-top: 0; border-left: 0; border-bottom: 0; border-right: 0;"></div>
             <div id="boxs" style="text-align: center; border-top: 0; border-left: 0; border-bottom: 0; border-right: 0;"></div>
             <div id="boxs" style="text-align: center; border-top: 0; border-left: 0; border-bottom: 0; border-right: 0;"></div>
@@ -410,7 +513,7 @@
 
 
 
-    <div class="container" >
+    <div class="container" style="margin-bottom: 50px">
         <div class="d-flex align-items-center">
             <div id="box" class="box227" style="text-align: center" onclick="occupied(227)">227</div>
             <div id="box" class="box228" style="text-align: center" onclick="occupied(228)">228</div>
@@ -776,108 +879,7 @@
         </div>
     </div>
 
-    @if ( Auth::user()->role == 'admin')
-    <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content"  >
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid" style="margin-top: 200px">
-                @if(Session::has('success2'))
-                <div class="alert alert-success" role="alert">
-                    {{Session::get('success2')}}
-                </div>
-                @endif
-
-                @if(Session::has('delete'))
-                <div class="alert alert-danger" role="alert">
-                    {{Session::get('delete')}}
-                </div>
-                @endif
-
-                @if(Session::has('update'))
-                <div class="alert alert-success" role="alert">
-                    {{Session::get('update')}}
-                </div>
-                @endif
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <input type="hidden" value="{{ url()->full() }}" id="url">
-                            <a href="/map" class="btn btn-primary" style="float: right" id="route">Request</a>
-                            <h6 class="m-0 font-weight-bold text-primary" id="url_name">Person List</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <!-- <th>User image</th> -->
-                                            <th>First name</th>
-                                            <th>Last name</th>
-                                            <th>Middle name</th>
-                                            <th>Grave no</th>
-                                            <th>Date Acquired</th>
-                                            <th>Block no</th>
-                                            <th>Type of Lot</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <!-- <tfoot>
-                                        <tr>
-                                            <th>User image</th>
-                                            <th>First name</th>
-                                            <th>Last name</th>
-                                            <th>Grave no</th>
-                                            <th>Born date</th>
-                                            <th>Die date</th>
-                                            <th>Block no</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </tfoot> -->
-                                    <tbody>
-                                        @foreach ($peoples as $people)
-                                        <tr>
-                                            <!-- <td><img src='{{ asset("storage/people/$people->user_image") }}' alt="" width="100"></td> -->
-                                            <td>{{ $people->first_name }}</td>
-                                            <td>{{ $people->last_name }}</td>
-                                            <td>{{ $people->middle_name }}</td>
-                                            <td>{{ $people->cemetery_no }}</td>
-                                            <td>{!! date('M d, Y', strtotime($people->born_date)) !!}</td>
-                                            <td>{{ $people->block_no }}</td>
-                                            <td>{{ $people->type_of_lot }}</td>
-                                            <td>
-                                                <a onclick="edit({{ $people->id }})" class="btn btn-primary btn-icon-split btn-sm">
-                                                <span class="text" style="color: white">Edit</span></a>
-                                            </td>
-                                        </tr>
-                                       @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- /.container-fluid -->
-
-            </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <!-- <span>Copyright &copy; Your Website 2020</span> -->
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
-
-        </div>
-        @endif
-
+    
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -1424,7 +1426,6 @@
     }
     #one {
         position: absolute;
-        top: 150px;
         left: 280px;
         z-index: 1;
         font-size: 100px;
@@ -1432,7 +1433,6 @@
     }     
     #two {
         position: absolute;
-        top: 150px;
         left: 580px;
         z-index: 1;
         font-size: 100px;
@@ -1440,7 +1440,6 @@
     }     
     #three {
         position: absolute;
-        top: 150px;
         left: 940px;
         z-index: 100;
         font-size: 100px;
@@ -1474,99 +1473,6 @@
         width: 60px;
     }
     }
-    /* @media screen and (max-width: 1920px) {
-        .occupied  {
-        background-color: red !important;
-        color: white !important;
-    }
-    .occupied:hover {
-        background-color: red !important;
-    }
-    .reserve {
-        background-color: blue !important;
-        color: white !important;
-    }
-    .reserve:hover {
-        background-color: yellow !important;
-    }
-    #box {
-        width: 35px;
-        height: 35px;
-        border: 1px solid grey;
-        border-radius: 6px;
-        background-color: #f4f4f4;
-        color: grey;
-    }
-    #boxs {
-        width: 35px;
-        height: 35px;
-        border: 1px solid black;
-        border-radius: 5px;
-    }
-    #box:hover {
-        background-color: #7abacf;
-    }
-    #status {
-        color: #ffc700;
-        font-weight: 200;
-    }
-    .container {
-        justify-content: center;
-    }
-    #background {
-        background-image: url("/assets/2.jpeg");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-
-    }
-    #one {
-        position: fixed;
-        left: 360px;
-        z-index: 1;
-        font-size: 100px;
-        color: #64658278;
-    }     
-    #two {
-        position: fixed;
-        top: 160px;
-        left: 750px;
-        z-index: 1;
-        font-size: 100px;
-        color: #64658278;
-    }     
-    #three {
-        position: fixed;
-        top: 160px;
-        left: 1150px;
-        z-index: 100;
-        font-size: 100px;
-        color: #64658278;
-    }
-    #four {
-        position: fixed;
-        left: 360px;
-        z-index: 100;
-        font-size: 100px;
-        color: #64658278;
-    }
-    #five {
-        position: fixed;
-        left: 750px;
-        z-index: 100;
-        font-size: 100px;
-        color: #64658278;
-    }
-    #six {
-        position: fixed;
-        left: 1150px;
-        z-index: 100;
-        font-size: 100px;
-        color: #64658278;
-    }
-    .none {
-        display: none;
-    }    
-    } */
+ 
 </style>
 </html>
