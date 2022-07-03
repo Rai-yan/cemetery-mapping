@@ -180,8 +180,13 @@
             <div id="box" class="box428" style="text-align: center" onclick="occupied(428)">428</div>
       
         </div>
-        <div style="font-weight: 800; font-size: 19px; top: 80%; color: white; background-color: #808080c2; height: 50px; width: 82%; vertical-align: baseline;">
+        <div style="font-weight: 800; font-size: 19px; top: 80%; color: white; background-color: #808080c2; height: 50px; width: 92%; vertical-align: baseline;">
         Entrance
+        <b style="margin-left: 10px; font-size: 30px;">-</b>
+        <b style="margin-left: 10px; font-size: 30px;">-</b>
+        <b style="margin-left: 10px; font-size: 30px;">-</b>
+        <b style="margin-left: 10px; font-size: 30px;">-</b>
+        <b style="margin-left: 10px; font-size: 30px;">-</b>
         <b style="margin-left: 10px; font-size: 30px;">-</b>
         <b style="margin-left: 10px; font-size: 30px;">-</b>
         <b style="margin-left: 10px; font-size: 30px;">-</b>
@@ -2366,7 +2371,7 @@
     }
     #one {
         position: absolute;
-        left: 280px;
+        left: 300px;
         z-index: 1;
         font-size: 100px;
         color: #64658278;
@@ -2413,9 +2418,11 @@
         width: 60px;
     }
     }
-    
 
-    @media screen and (min-width: 1200px) {
+
+
+
+    @media screen and (max-width: 1200px) {
     .occupied  {
         background-color: red !important;
         color: white !important;
@@ -2487,35 +2494,35 @@
     }
     #one {
         position: absolute;
-        left: 400px;
+        left: 300px;
         z-index: 1;
         font-size: 100px;
         color: #64658278;
     }     
     #two {
         position: absolute;
-        left: 900px;
+        left: 800px;
         z-index: 1;
         font-size: 100px;
         color: #64658278;
     }     
     #three {
         position: absolute;
-        left: 600px;
+        left: 550px;
         z-index: 100;
         font-size: 100px;
         color: #64658278;
     }
     #four {
         position: absolute;
-        left: 920px;
+        left: 820px;
         z-index: 100;
         font-size: 100px;
         color: #64658278;
     }
     #five {
         position: absolute;
-        left: 1180px;
+        left: 1070px;
         z-index: 100;
         font-size: 100px;
         color: #64658278;
@@ -2534,5 +2541,8 @@
         width: 60px;
     }
     }
+    
+
+  
 </style>
 </html>
