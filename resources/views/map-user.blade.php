@@ -217,7 +217,6 @@
         <b style="margin-left: 10px; font-size: 30px;">-</b>
         <b style="margin-left: 10px; font-size: 30px;">-</b>
         <b style="margin-left: 10px; font-size: 30px;">-</b>
-        <b style="margin-left: 10px; font-size: 30px;">-</b>
 
         
         </div>
@@ -2419,7 +2418,7 @@
 
 
 
-    @media screen and (max-width: 1200px) {
+    @media screen and (min-width: 1200px) {
     .occupied  {
         background-color: red !important;
         color: white !important;
