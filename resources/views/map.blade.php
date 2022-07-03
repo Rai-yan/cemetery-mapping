@@ -1910,11 +1910,11 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <label for="exampleFormControlInput1" class="form-label">Born date</label>
+                                        <label for="exampleFormControlInput1" class="form-label">Date of Birth</label>
                                         <input type="date" name="born_date" disabled class="form-control" id="born_date" placeholder="Ponze">
                                     </div>
                                     <div class="col">
-                                        <label for="exampleFormControlInput1" class="form-label">Die date</label>
+                                        <label for="exampleFormControlInput1" class="form-label">Date of Death</label>
                                         <input type="date" name="die_date" disabled class="form-control" id="die_date" placeholder="Ponze">
                                     </div>
                                 </div>
@@ -1941,11 +1941,11 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <label for="exampleFormControlInput1" class="form-label">Born date</label>
+                                        <label for="exampleFormControlInput1" class="form-label">Date of Birth</label>
                                         <input type="date" name="born_date" disabled class="form-control" id="born_date1" placeholder="Ponze">
                                     </div>
                                     <div class="col">
-                                        <label for="exampleFormControlInput1" class="form-label">Die date</label>
+                                        <label for="exampleFormControlInput1" class="form-label">Date of Death</label>
                                         <input type="date" name="die_date" disabled class="form-control" id="die_date1" placeholder="Ponze">
                                     </div>
                                 </div>
@@ -1977,11 +1977,11 @@
 
                                         <div class="row">
                                             <div class="col">
-                                                <label for="exampleFormControlInput1" class="form-label">Born date</label>
+                                                <label for="exampleFormControlInput1" class="form-label">Date of Birth</label>
                                                 <input type="date" name="born_date" min="1900-01-01" class="form-control" id="exampleFormControlInput1" placeholder="Ponze">
                                             </div>
                                             <div class="col">
-                                                <label for="exampleFormControlInput1" class="form-label">Die date</label>
+                                                <label for="exampleFormControlInput1" class="form-label">Date of Death</label>
                                                 <input type="date" name="die_date" min="1900-01-01" class="form-control" id="exampleFormControlInput1" placeholder="Ponze">
                                             </div>
                                         </div>
