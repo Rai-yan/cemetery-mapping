@@ -151,6 +151,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
+        <div style="margin-left: 110px">
 
         <div class="d-flex align-items-center" style="margin-top: 0px">
             <div id="box" class="box1" style="text-align: center" onclick="occupied(1)">1</div>
@@ -298,7 +299,7 @@
             <div id="box" class="box428" style="text-align: center" onclick="occupied(428)">428</div>
       
         </div>
-        <div style="font-weight: 800; font-size: 19px; top: 80%; color: white; background-color: #808080c2; height: 50px; width: 82%; vertical-align: baseline;">
+        <div style="font-weight: 800; font-size: 19px; top: 80%; color: white; background-color: #808080c2; height: 50px; width: 89%; vertical-align: baseline;">
         Entrance
         <b style="margin-left: 10px; font-size: 30px;">-</b>
         <b style="margin-left: 10px; font-size: 30px;">-</b>
@@ -1031,6 +1032,8 @@
             
   
         </div>
+
+</div>
    
    <div style="margin-bottom: 50px"></div>
        
@@ -2484,35 +2487,35 @@
     }
     #one {
         position: absolute;
-        left: 280px;
+        left: 400px;
         z-index: 1;
         font-size: 100px;
         color: #64658278;
     }     
     #two {
         position: absolute;
-        left: 800px;
+        left: 900px;
         z-index: 1;
         font-size: 100px;
         color: #64658278;
     }     
     #three {
         position: absolute;
-        left: 550px;
+        left: 600px;
         z-index: 100;
         font-size: 100px;
         color: #64658278;
     }
     #four {
         position: absolute;
-        left: 820px;
+        left: 920px;
         z-index: 100;
         font-size: 100px;
         color: #64658278;
     }
     #five {
         position: absolute;
-        left: 1070px;
+        left: 1180px;
         z-index: 100;
         font-size: 100px;
         color: #64658278;
