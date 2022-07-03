@@ -2413,6 +2413,126 @@
         width: 60px;
     }
     }
- 
+    
+
+    @media screen and (min-width: 1200px) {
+    .occupied  {
+        background-color: red !important;
+        color: white !important;
+    }
+    .occupied:hover {
+        background-color: red !important;
+    }
+    .reserve {
+        background-color: yellow !important;
+        color: white !important;
+    }
+    .reserve:hover {
+        background-color: yellow !important;
+    }
+    .reserve-admin {
+        background-color: blue !important;
+        color: white !important;
+    }
+    .reserve-admin:hover {
+        background-color: blue !important;
+    }
+    #box {
+        width: 30px;
+        height: 30px;
+        border: 1px solid grey;
+        background-color: #f4f4f4;
+        color: grey;
+    }
+    #box2 {
+        width: 30px;
+        height: 30px;
+        border: 1px solid grey;
+        border-width: 0px 25px 30px 0px;
+        border-color: transparent #f4f4f4 #808080c2 #f4f4f4;
+        color: grey;
+        transform: rotate(0deg);
+    }
+    #box3 {
+        width: 30px;
+        height: 30px;
+        border: 1px solid #808080c2;
+        border-width: 0px 25px 30px 25px;
+        border-color: transparent #808080c2 transparent transparent;
+        color: grey;
+        transform: rotate(0deg);
+    }
+    #boxs {
+        width: 30px;
+        height: 30px;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+    #box:hover {
+        background-color: #7abacf;
+    }
+    #status {
+        color: #ffc700;
+    }
+    .container {
+        justify-content: center;
+    }
+    #background {
+        background-image: url("/assets/2.jpeg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        /* background-color: #66b567;   */
+    }
+    #one {
+        position: absolute;
+        left: 400px;
+        z-index: 1;
+        font-size: 100px;
+        color: #64658278;
+    }     
+    #two {
+        position: absolute;
+        left: 900px;
+        z-index: 1;
+        font-size: 100px;
+        color: #64658278;
+    }     
+    #three {
+        position: absolute;
+        left: 600px;
+        z-index: 100;
+        font-size: 100px;
+        color: #64658278;
+    }
+    #four {
+        position: absolute;
+        left: 920px;
+        z-index: 100;
+        font-size: 100px;
+        color: #64658278;
+    }
+    #five {
+        position: absolute;
+        left: 1180px;
+        z-index: 100;
+        font-size: 100px;
+        color: #64658278;
+    }
+    #six {
+        position: absolute;
+        left: 940px;
+        z-index: 100;
+        font-size: 100px;
+        color: #64658278;
+    }
+    .none {
+        display: none;
+    }
+    div.dataTables_wrapper div.dataTables_length select {
+        width: 60px;
+    }
+    }
 </style>
 </html>
