@@ -79,7 +79,7 @@
                                             <th>Date Acquired</th>
                                             <th>Block no</th>
                                             <th>Type of Lot</th>
-                                            <!-- <th>Actions</th> -->
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <!-- <tfoot>
@@ -105,14 +105,14 @@
                                             <td>{!! date('M d, Y', strtotime($people->born_date)) !!}</td>
                                             <td>{{ $people->block_no }}</td>
                                             <td>{{ $people->type_of_lot }}</td>
-                                            <!-- <td>
-                                                <a href="/accept/{{ $people->id }}" class="btn btn-success btn-icon-split btn-sm">
+                                            <td>
+                                                <!-- <a href="/accept/{{ $people->id }}" class="btn btn-success btn-icon-split btn-sm">
                                                 <span class="text">Accept</span></a>
                                                 <a href="/denied/{{ $people->id }}" class="btn btn-danger btn-icon-split btn-sm">
-                                                <span class="text">Denied</span></a>
+                                                <span class="text">Denied</span></a> -->
                                                 <a onclick="edit({{ $people->id }})" class="btn btn-primary btn-icon-split btn-sm">
                                                 <span class="text" style="color: white">Edit</span></a>
-                                            </td> -->
+                                            </td>
                                         </tr>
                                        @endforeach
                                     </tbody>
