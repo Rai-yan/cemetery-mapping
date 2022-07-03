@@ -22,6 +22,8 @@ class People extends Model
         'status',
         'created_by',
         'type_of_lot',
-        'middile_name'
+        'middile_name',
+        'is_owner',
+        'date_acquired'
     ];
 }

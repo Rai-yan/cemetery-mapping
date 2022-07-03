@@ -27,3 +27,33 @@ Senior Estate
 -middle initita
 -lot_id
 -remove back button
+
+
+owner
+Full Name:
+date of Acquired
+type ng Lot
+
+Deceased Person Details  -
+First Name
+Middle Name
+Last Name
+Date of Birth
+Date of Death
+
+deceased person siya yung may ma add
+No login
+Maximun Date
+
+
+
+
+
+
+
+
+
+
+pag sa user view concat(name) no owner
+
+

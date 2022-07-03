@@ -16,7 +16,7 @@ class MappingController extends Controller
         // } else {
         //     $option = 'occupied';
         // }
-        $peoples = People::where('status', 'reserve')->get();
+        $peoples = People::where('status', 'reserve')->where('is_owner', '0')->get();
         return view('map', ['peoples' => $peoples]);
     }
 
@@ -27,7 +27,7 @@ class MappingController extends Controller
         // } else {
         //     $option = 'occupied';
         // }
-        $peoples = People::where('status', 'occupied')->get();
+        $peoples = People::where('status', 'occupied')->where('is_owner', '0')->get();
         return view('map2', ['peoples' => $peoples]);
     }
 
@@ -43,15 +43,7 @@ class MappingController extends Controller
 
     public function reserve(Request $request)
     {
-        // $request->validate([
-        //     'file_name' => 'max:2000 | mimes:jpeg,png,jpg,docx,pdf,xlsx',
-        // ]);
 
-        // $file_name = $request->file_name;
-        // if($file_name) {
-        //     $filename = time() .'.'.$file_name->getClientOriginalName();
-        //      Storage::disk('local')->putFileAs('public/people', $file_name, $filename);
-        // }
 
         $filename = "img";
 
@@ -61,23 +53,47 @@ class MappingController extends Controller
             'first_name' => $request->firstname,
             'last_name' => $request->lastname,
             'user_image' => $filename,
-            'born_date' => date('Y-m-d H:i:s'),
-            'die_date' => date('Y-m-d H:i:s'),
+            'date_acquired' => date('Y-m-d H:i:s'),
+            'block_no' => $request->block_no,
+            'grave_no' => 0,
+            'status' => 'owner',
+            'created_by' => Auth::user()->role,
+            'type_of_lot' => $request->lot,
+            'middle_name' => $request->middlename,
+            'is_owner' => '1'
+        ]);
+
+
+        return back()->with('success', 'Succesfully reserve !!');
+    }
+
+    public function reserve2(Request $request)
+    {
+        $owners = People::where('cemetery_no', $request->cemetery_no)->get();
+        $owner = People::where('id', $owners[0]->id)
+        ->update([
+            'status' => 'reserve'
+        ]);
+
+        $filename = "img";
+
+        $time = date('H:i:s');
+
+        $people = People::insert([
+            'cemetery_no' => $request->cemetery_no,
+            'first_name' => $request->firstname,
+            'last_name' => $request->lastname,
+            'user_image' => $filename,
+            'born_date' => $request->born_date." ".date('H:i:s'),
+            'die_date' => $request->die_date." ".date('H:i:s'),
             'block_no' => $request->block_no,
             'grave_no' => 0,
             'status' => 'reserve',
             'created_by' => Auth::user()->role,
-            'type_of_lot' => $request->lot,
-            'middle_name' => $request->middlename
+            'type_of_lot' => $owners[0]->type_of_lot,
+            'middle_name' => $request->middlename,
+            'is_owner' => '0'
         ]);
-
-        // if ($people) {
-        //     Cemetery::insert([
-        //         'cemetery_no' => $request->cemetery_no,
-        //         'status' => 'reserve',
-        //         'created_by' => Auth::user()->role
-        //     ]);
-        // }
 
         return back()->with('success', 'Succesfully reserve !!');
     }
@@ -96,7 +112,15 @@ class MappingController extends Controller
 
     public function accept(Request $request, $cemetery_no)
     {
-        People::where('id', $cemetery_no)
+        $people = People::where('id', $cemetery_no)->get();
+        $owner = People::where('cemetery_no', $people[0]->cemetery_no)->get();
+
+        $owner = People::where('id', $owner[0]->id)
+        ->update([
+            'status' => 'occupied'
+        ]);
+
+        $deceased = People::where('id', $cemetery_no)
         ->update([
             'status' => 'occupied'
         ]);
@@ -105,6 +129,14 @@ class MappingController extends Controller
 
     public function denied(Request $request, $cemetery_no)
     {
+        $people = People::where('id', $cemetery_no)->get();
+        $owner = People::where('cemetery_no', $people[0]->cemetery_no)->get();
+
+        $owner = People::where('id', $owner[0]->id)
+        ->update([
+            'status' => 'reserve'
+        ]);
+
         People::where('id', $cemetery_no)->delete();
         Cemetery::where('cemetery_no', $cemetery_no)->delete();
         return back()->with('delete', 'Delete succesfully !!');
@@ -113,7 +145,11 @@ class MappingController extends Controller
     public function edit(Request $request, $cemetery_no)
     {
         $people = People::where('id', $cemetery_no)->get();
-        return $people[0];
+        $owner = People::where('cemetery_no', $people[0]->cemetery_no)->get();
+        return [
+            "people" => $people[0],
+            "owner" => $owner[0]
+        ];
     }
 
     public function update(Request $request)
@@ -122,9 +158,9 @@ class MappingController extends Controller
         ->update([
             'first_name' => $request->firstname,
             'last_name' => $request->lastname,
-            'type_of_lot' => $request->lot,
             'middle_name' => $request->middlename
         ]);
+
         return back()->with('update', 'Update succesfully !!');
     }
 }

@@ -27,6 +27,7 @@ Route::post('/update', [MappingController::class, 'update']);
 Route::get('/edit/{cemetery_no}', [MappingController::class, 'edit'])->name('edit');
 Route::post('/update', [MappingController::class, 'update']);
 Route::post('/reserve', [MappingController::class, 'reserve']);
+Route::post('/reserve2', [MappingController::class, 'reserve2']);
 
 Auth::routes();
 
