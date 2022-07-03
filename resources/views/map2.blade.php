@@ -140,9 +140,9 @@
         </div>
         @endif
 
-        <a href="http://127.0.0.1:8000/assets/map.PNG" target="_blank">
+        <!-- <a href="http://127.0.0.1:8000/assets/map.PNG" target="_blank">
             <img src="assets/map.PNG" alt="" width="100" height="50" style="float: right"><br><br>
-        </a>
+        </a> -->
         
        
         @if(Session::has('success'))

@@ -22,9 +22,9 @@
 <body id="background">
 <div class="container" style="margin-top: 50px">
 
-        <a href="http://127.0.0.1:8000/assets/map.PNG" target="_blank">
+        <!-- <a href="http://127.0.0.1:8000/assets/map.PNG" target="_blank">
             <img src="assets/map.PNG" alt="" width="100" height="50" style="float: right"><br><br>
-        </a>
+        </a> -->
         
        
         @if(Session::has('success'))
@@ -1654,6 +1654,70 @@
     </div> -->
 
  
+    <div class="modal fade" id="exampssleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cemetery No. <b id="no">12</b></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ url('/reserve') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" value="" name="cemetery_no" id="cemetery_no">
+                        <input type="hidden" value="" name="block_no" id="block_no">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">First name</label>
+                            <input type="text" name="firstname" class="form-control" id="exampleFormControlInput1" placeholder="Juan">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Last name</label>
+                            <input type="text" name="lastname" class="form-control" id="exampleFormControlInput1" placeholder="Ponze">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Middle name</label>
+                            <input type="text" name="middlename" class="form-control" id="exampleFormControlInput1" placeholder="Ponze">
+                        </div>
+                        <!-- <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Born date</label>
+                                    <input type="date" name="born_date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Die date</label>
+                                    <input type="date" name="die_date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Type of Lot</label>
+                            <select class="form-select" name="lot" aria-label="Default select example">
+                                <option selected>Open this select menu</option>
+                                <option value="Lawn Lot">Lawn Lot</option>
+                                <option value="Two Lawn Lot">Two Lawn Lot</option>
+                                <option value="Memorial Garden">Memorial Garden</option>
+                                <option value="Single Niche">Single Niche</option>
+                                <option value="Junior Estat">Junior Estate</option>
+                                <option value="Senior Estate">Senior Estate</option>
+                            </select>
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">User image</label>
+                            <input type="file" name="file_name" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        </div> -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="modal fade" id="getOnePeople" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -1665,32 +1729,17 @@
                 <div class="modal-body">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">(<b id="status">Reserve</b>)</h5>  
+                                <!-- <h5 class="card-title">(<b id="status">Reserve</b>)</h5>   -->
+                                <h5 class="card-title">(<b style="color: blue">owner</b>)</h5>  
                                 <input type="hidden" value="" name="people_cemetery_no" id="people_cemetery_no">
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">First name</label>
-                                    <input type="text" name="firstname" class="form-control" id="firstname" disabled>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Last name</label>
-                                    <input type="text" name="lastname" class="form-control" id="lastname" disabled>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Middle name</label>
-                                    <input type="text" name="middlename" disabled  class="form-control" id="middlename" placeholder="Ponze">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Type of Lot</label>
-                                    <input type="text" name="typeoflot" disabled  class="form-control" id="typeoflot" placeholder="Ponze">
-                                </div>
-                                <div class="col">
-                                        <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Date Acquired</label>
-                                            <input type="date" name="born_date" class="form-control" id="born_date" disabled>
-                                        </div>
-                                    </div>
-                                </div>
+                                <label for="exampleFormControlInput1" class="form-label">Name:</label>
+                                <label id="firtsname11" class="form-label" style="font-weight: 700">Name</label><br>
+                                <label for="exampleFormControlInput1" class="form-label">Type of Lot:</label>
+                                <label id="typeoflot" class="form-label" style="font-weight: 700">Name</label><br>
+                                <label for="exampleFormControlInput1" class="form-label">Date Acquired:</label>
+                                <label id="date_acquired" class="form-label" style="font-weight: 700">Name</label>
                             </div>
+                        </div>
                         <!-- <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">User image</label><br>
                             <img src="" style="width: 250px; height: 250px" alt="">
@@ -1712,14 +1761,47 @@
                                     <label for="exampleFormControlInput1" class="form-label">Middle name</label>
                                     <input type="text" name="middlename1" disabled  class="form-control" id="middlename1" placeholder="Ponze">
                                 </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Type of Lot</label>
-                                    <input type="text" name="typeoflot" disabled  class="form-control" id="typeoflot1" placeholder="Ponze">
-                                </div>
-                                <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Date Acquired</label>
-                                        <input type="date" name="born_date" class="form-control" id="born_date1" disabled>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="exampleFormControlInput1" class="form-label">Born date</label>
+                                        <input type="date" name="born_date" disabled class="form-control" id="born_date" placeholder="Ponze">
                                     </div>
+                                    <div class="col">
+                                        <label for="exampleFormControlInput1" class="form-label">Die date</label>
+                                        <input type="date" name="die_date" disabled class="form-control" id="die_date" placeholder="Ponze">
+                                    </div>
+                                </div>
+                        </div>
+                        </div>
+                            </div>
+
+                            <div id="ifExist1" style="margin-top: 20px">
+                            <div class="card" style="margin-top: 20px">
+                            <div class="card-body">
+                                <h5 class="card-title">(<b id="status2">Reserve</b>)</h5> 
+                            <input type="hidden" value="" name="people_cemetery_no" id="people_cemetery_no">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">First name</label>
+                                <input type="text" name="firstname" class="form-control" id="firstname2" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Last name</label>
+                                <input type="text" name="lastname" class="form-control" id="lastname2" disabled>
+                            </div>
+                            <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Middle name</label>
+                                    <input type="text" name="middlename1" disabled  class="form-control" id="middlename2" placeholder="Ponze">
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="exampleFormControlInput1" class="form-label">Born date</label>
+                                        <input type="date" name="born_date" disabled class="form-control" id="born_date1" placeholder="Ponze">
+                                    </div>
+                                    <div class="col">
+                                        <label for="exampleFormControlInput1" class="form-label">Die date</label>
+                                        <input type="date" name="die_date" disabled class="form-control" id="die_date1" placeholder="Ponze">
+                                    </div>
+                                </div>
                         </div>
                         </div>
                             </div>
@@ -1729,7 +1811,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title"><b>Add new</b></h5>
                                     <hr>
-                                    <form action="{{ url('/reserve') }}" method="post" enctype="multipart/form-data">
+                                    <form action="{{ url('/reserve2') }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <input type="hidden" value="" name="cemetery_no" id="cemetery_noz">
                                         <input type="hidden" value="" name="block_no" id="block_noz">
@@ -1745,28 +1827,25 @@
                                             <label for="exampleFormControlInput1" class="form-label">Middle name</label>
                                             <input type="text" name="middlename" class="form-control" id="exampleFormControlInput1" placeholder="Ponze">
                                         </div>
-                                        <div class="col">
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Date Acquired</label>
-                                                    <input type="date" name="born_date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                                                </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="exampleFormControlInput1" class="form-label">Born date</label>
+                                                <input type="date" name="born_date" class="form-control" id="exampleFormControlInput1" placeholder="Ponze">
                                             </div>
-                                        <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Type of Lot</label>
-                                            <select class="form-select" name="lot" aria-label="Default select example">
-                                                <option selected>Open this select menu</option>
-                                                <option value="Lawn Lot">Lawn Lot</option>
-                                                <option value="Two Lawn Lot">Two Lawn Lot</option>
-                                                <option value="Memorial Garden">Memorial Garden</option>
-                                                <option value="Single Niche">Single Niche</option>
-                                                <option value="Junior Estat">Junior Estate</option>
-                                                <option value="Senior Estate">Senior Estate</option>
-                                            </select>
+                                            <div class="col">
+                                                <label for="exampleFormControlInput1" class="form-label">Die date</label>
+                                                <input type="date" name="die_date" class="form-control" id="exampleFormControlInput1" placeholder="Ponze">
+                                            </div>
                                         </div>
+                                        
                                         <!-- <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">User image</label>
                                             <input type="file" name="file_name" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
                                         </div> -->
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -1775,7 +1854,10 @@
                         
 
 
-                     
+                        <div class="modal-footer">
+                            <!-- <a onclick="add()" id="addclick" class="btn btn-primary">Add</a>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                        </div>
                 </div>
             </div>
         </div>
@@ -1789,54 +1871,51 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('/update') }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" value="" name="cemetery_no" id="cemetery_no1">
-                        <input type="hidden" value="" name="block_no" id="block_no1">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">First name</label>
-                            <input type="text" name="firstname" class="form-control" id="fname" placeholder="Juan">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- <h5 class="card-title">(<b id="status">Reserve</b>)</h5>   -->
+                            <h5 class="card-title">(<b style="color: blue">owner</b>)</h5>  
+                            <input type="hidden" value="" name="people_cemetery_no" id="people_cemetery_no">
+                            <label for="exampleFormControlInput1" class="form-label">Name:</label>
+                            <label id="firstname22" class="form-label" style="font-weight: 700">Name</label><br>
+                            <label for="exampleFormControlInput1" class="form-label">Type of Lot:</label>
+                            <label id="typeoflot22" class="form-label" style="font-weight: 700">Name</label><br>
+                            <label for="exampleFormControlInput1" class="form-label">Date Acquired:</label>
+                            <label id="born_date22" class="form-label" style="font-weight: 700">Name</label>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Last name</label>
-                            <input type="text" name="lastname" class="form-control" id="lname" placeholder="Ponze">
-                        </div>
-                        <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Middle name</label>
-                                    <input type="text" name="middlename"  class="form-control" id="mname" placeholder="Ponze">
-                                </div>
-                        <div class="row">
-                            <div class="col">
+                    </div>
+                    <div class="card" style="margin-top: 20px">
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Deceased Person</b></h5>  
+                            <form action="{{ url('/update') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" value="" name="owner_id" id="owner_id">
+                                <input type="hidden" value="" name="cemetery_no" id="cemetery_no1">
+                                <input type="hidden" value="" name="block_no" id="block_no1">
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Born date</label>
-                                    <input type="date" name="born_date" class="form-control" id="bdate" placeholder="name@example.com">
+                                    <label for="exampleFormControlInput1" class="form-label">First name</label>
+                                    <input type="text" name="firstname" class="form-control" id="fname" placeholder="Juan">
                                 </div>
-                            </div>
-                            <div class="col">
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Die date</label>
-                                    <input type="date" name="die_date" class="form-control" id="ddate" placeholder="name@example.com">
+                                    <label for="exampleFormControlInput1" class="form-label">Last name</label>
+                                    <input type="text" name="lastname" class="form-control" id="lname" placeholder="Ponze">
                                 </div>
-                            </div>
+                                <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Middle name</label>
+                                            <input type="text" name="middlename"  class="form-control" id="mname" placeholder="Ponze">
+                                        </div>
+                                
+                                <!-- <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">User image</label>
+                                    <input type="file" name="file_name" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                </div> -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Type of Lot</label>
-                            <select class="form-select" name="lot" aria-label="Default select example">
-                                <option selected id="selected">Open this select menu</option>
-                                <option value="Lawn Lot">Lawn Lot</option>
-                                <option value="Two Lawn Lot">Two Lawn Lot</option>
-                                <option value="Memorial Garden">Memorial Garden</option>
-                                <option value="Single Niche">Single Niche</option>
-                                <option value="Junior Estat">Junior Estate</option>
-                                <option value="Senior Estate">Senior Estate</option>
-                            </select>
-                        </div>
-                        <!-- <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">User image</label>
-                            <input type="file" name="file_name" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                        </div> -->
-                      
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1858,7 +1937,7 @@
 
     <!-- Page level custom scripts -->
     <script src="{{ url('js/demo/datatables-demo.js') }}"></script>
-    <script>
+<script>
     function show_sidebar1() { $('#one').addClass('none'); }
     function hide_sidebar1() { $('#one').removeClass('none'); }
 
@@ -1894,7 +1973,6 @@
             url : "{{ route('cemetery') }}",
             type: "GET",
             success: function(response) {
-                console.log(response)
                 response.forEach(element => {
                     if (element.status == 'occupied') {
                         $(".box"+element.cemetery_no).addClass('occupied');
@@ -1929,12 +2007,14 @@
                 type: "GET",
                 data: { cemetery_no: number },
                 success: function(response) {
+                    console.log(response[2]);
                     if (response.length == '2') {
-                        console.log(response[0].middle_name)
                         $('#add').css('display', 'none');
                         $('#ifExist').css('display', 'block');
-                        var borndate = response[0].born_date.split(' ')[0];
+                        $('#ifExist1').css('display', 'none');
+                        var date_acquired = response[0].date_acquired.split(' ')[0];
                         var diedate = response[0].die_date.split(' ')[0];
+                        var borndate = response[0].born_date.split(' ')[0];
                         if (response[0].status == 'reserve-admin') {
                             $('#status').text('reserve');
                         } else {
@@ -1946,16 +2026,90 @@
                             $('#status').css('color', 'yellow');
                         }
                         $('#nos').text(number);
-                        $('#firstname').val(response[0].first_name);
+                        $('#firtsname11').text(response[0].first_name+" "+response[0].middle_name+" "+response[0].last_name);
                         $('#lastname').val(response[0].last_name);
                         $('#middlename').val(response[0].middle_name);
-                        $('#typeoflot').val(response[0].type_of_lot);
+                        $('#typeoflot').text(response[0].type_of_lot);
+                        $('#date_acquired').text(date_acquired);
+                        $('#die_date').val(diedate);
                         $('#born_date').val(borndate);
+                        $("img").attr("src",'storage/people/'+response[0].user_image);
+
+                        var diedate = response[1].die_date.split(' ')[0];
+                        var borndate = response[1].born_date.split(' ')[0];
+                        if (response[1].status == 'reserve-admin') {
+                            $('#status1').text('reserve');
+                        } else {
+                            $('#status1').text(response[1].status);
+                        }
+                        if (response[1].status == 'occupied') {
+                            $('#status1').css('color', 'red');
+                        } else {
+                            $('#status1').css('color', 'yellow');
+                        }
+                        
+                        $('#nos1').text(number);
+                        $('#firstname1').val(response[1].first_name);
+                        $('#lastname1').val(response[1].last_name);
+                        $('#middlename1').val(response[1].middle_name);
+                        $('#typeoflot1').val(response[1].type_of_lot);
+                        $('#die_date1').val(diedate);
+                        $('#born_date1').val(borndate);
+                        $("img1").attr("src",'storage/people/'+response[1].user_image);
+
+
+                        var test = $('#cemetery_noz').val(number)
+
+                        if (number <= 61) {
+                            $('#block_no').val('1')
+                            $('#block_noz').val('1')
+                        } else if (number > 61 && number < 141) {
+                            $('#block_no').val('2')
+                            $('#block_noz').val('2')
+                        } else if (number > 140 && number < 235) {
+                            $('#block_no').val('3')
+                            $('#block_noz').val('3')
+                        } else if (number > 234 && number < 289) {
+                            $('#block_no').val('4')
+                            $('#block_noz').val('4')
+                        } else if (number > 288 && number < 376) {
+                            $('#block_no').val('5')
+                            $('#block_noz').val('5')
+                        } else {
+                            $('#block_no').val('6')
+                            $('#block_noz').val('6')
+                        }
+                    } else if (response.length == '3') {
+
+
+                        $('#ifExist1').css('display', 'block');
+
+                        $('#add').css('display', 'none');
+                        $('#ifExist').css('display', 'block');
+                        var date_acquired = response[0].date_acquired.split(' ')[0];
+                         var diedate = response[0].die_date.split(' ')[0];
+                        var borndate = response[0].born_date.split(' ')[0];
+                        if (response[0].status == 'reserve-admin') {
+                            $('#status').text('reserve');
+                        } else {
+                            $('#status').text(response[0].status);
+                        }
+                        if (response[0].status == 'occupied') {
+                            $('#status').css('color', 'red');
+                        } else {
+                            $('#status').css('color', 'yellow');
+                        }
+                        $('#nos').text(number);
+                        $('#firtsname11').text(response[0].first_name+" "+response[0].middle_name+" "+response[0].last_name);
+                        $('#lastname').val(response[0].last_name);
+                        $('#middlename').val(response[0].middle_name);
+                        $('#typeoflot').text(response[0].type_of_lot);
+                        $('#date_acquired').text(date_acquired);
                         $('#die_date').val(diedate);
                         $("img").attr("src",'storage/people/'+response[0].user_image);
 
-                        var borndate = response[1].born_date.split(' ')[0];
-                        var diedate = response[1].die_date.split(' ')[0];
+                        var diedate1 = response[1].die_date.split(' ')[0];
+                        var borndate1 = response[1].born_date.split(' ')[0];
                         if (response[1].status == 'reserve-admin') {
                             $('#status1').text('reserve');
                         } else {
@@ -1971,14 +2125,68 @@
                         $('#lastname1').val(response[1].last_name);
                         $('#middlename1').val(response[1].middle_name);
                         $('#typeoflot1').val(response[1].type_of_lot);
-                        $('#born_date1').val(borndate);
-                        $('#die_date1').val(diedate);
+                        $('#born_date1').val(diedate1);
+                        $('#die_date1').val(borndate1);
                         $("img1").attr("src",'storage/people/'+response[1].user_image);
+
+
+
+
+                        var date_acquired2 = response[2].born_date.split(' ')[0];
+                        var diedate = response[2].die_date.split(' ')[0];
+                        if (response[2].status == 'reserve-admin') {
+                            $('#status2').text('reserve');
+                        } else {
+                            $('#status2').text(response[2].status);
+                        }
+                        if (response[2].status == 'occupied') {
+                            $('#status2').css('color', 'red');
+                        } else {
+                            $('#status2').css('color', 'yellow');
+                        }
+                        $('#nos2').text(number);
+                        $('#firstname2').val(response[2].first_name);
+                        $('#lastname2').val(response[2].last_name);
+                        $('#middlename2').val(response[2].middle_name);
+                        $('#typeoflot2').val(response[2].type_of_lot);
+                        $('#date_acquired2').val(date_acquired2);
+                        $('#die_date2').val(diedate);
+                        $("img1").attr("src",'storage/people/'+response[2].user_image);
+
+
+                        var test = $('#cemetery_noz').val(number)
+
+                        if (number <= 61) {
+                            $('#block_no').val('1')
+                            $('#block_noz').val('1')
+                        } else if (number > 61 && number < 141) {
+                            $('#block_no').val('2')
+                            $('#block_noz').val('2')
+                        } else if (number > 140 && number < 235) {
+                            $('#block_no').val('3')
+                            $('#block_noz').val('3')
+                        } else if (number > 234 && number < 289) {
+                            $('#block_no').val('4')
+                            $('#block_noz').val('4')
+                        } else if (number > 288 && number < 376) {
+                            $('#block_no').val('5')
+                            $('#block_noz').val('5')
+                        } else {
+                            $('#block_no').val('6')
+                            $('#block_noz').val('6')
+                        }
+
+
+
+
+
+
                     } else {
                         $('#ifExist').css('display', 'none');
+                        $('#ifExist1').css('display', 'none');
                         $('#add').css('display', 'none');
                         $('#addclick').css('display', 'block');
-                        var borndate = response[0].born_date.split(' ')[0];
+                        var date_acquired = response[0].date_acquired.split(' ')[0];
                         var diedate = response[0].die_date.split(' ')[0];
                         if (response[0].status == 'reserve-admin') {
                             $('#status').text('reserve');
@@ -1990,12 +2198,13 @@
                         } else {
                             $('#status').css('color', 'yellow');
                         }
+                        $('#owner_id1').val(response[0].id);
                         $('#nos').text(number);
-                        $('#firstname').val(response[0].first_name);
+                        $('#firtsname11').text(response[0].first_name+" "+response[0].middle_name+" "+response[0].last_name);
                         $('#lastname').val(response[0].last_name);
                         $('#middlename').val(response[0].middle_name);
-                        $('#typeoflot').val(response[0].type_of_lot);
-                        $('#born_date').val(borndate);
+                        $('#typeoflot').text(response[0].type_of_lot);
+                        $('#date_acquired').text(date_acquired);
                         $('#die_date').val(diedate);
                         $("img").attr("src",'storage/people/'+response[0].user_image);
 
@@ -2031,8 +2240,7 @@
             $('#block_no').val(number)
             $("#exampleModal").modal('show');
 
-            var test = $('#cemetery_noz').val(number)
-            console.log(test)
+            $('#cemetery_noz').val(number)
 
             if (number <= 61) {
                 $('#block_no').val('1')
@@ -2064,16 +2272,23 @@
             type: "GET",
             data: { cemetery_no: number },
             success: function(response) {
-                var borndate = response.born_date.split(' ')[0];
-                var diedate = response.die_date.split(' ')[0];
+                console.log(response.owner)
+                var borndate = response.people.born_date.split(' ')[0];
+                var diedate = response.people.die_date.split(' ')[0];
                 $('#no2').text(number);
-                $('#fname').val(response.first_name);
-                $('#lname').val(response.last_name);
-                $('#mname').val(response.middle_name);
-                $('#selected').text(response.type_of_lot);
+                $('#fname').val(response.people.first_name);
+                $('#lname').val(response.people.last_name);
+                $('#mname').val(response.people.middle_name);
+                $('#selected').text(response.people.type_of_lot);
                 $('#bdate').val(borndate);
                 $('#ddate').val(diedate);
                 $('#cemetery_no1').val(number);
+
+                var borndate = response.owner.born_date.split(' ')[0];
+                $('#firstname22').text(response.owner.first_name+" "+response.owner.middle_name+" "+response.owner.last_name)
+                $('#typeoflot22').text(response.owner.type_of_lot);
+                $('#born_date22').text(borndate);
+                $('#owner_id').val(response.owner.id);
             }
         });
     }

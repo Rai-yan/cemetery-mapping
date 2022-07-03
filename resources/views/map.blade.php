@@ -141,9 +141,9 @@
         @endif
        
       
-        <a href="http://127.0.0.1:8000/assets/map.PNG" target="_blank">
+        <!-- <a href="http://127.0.0.1:8000/assets/map.PNG" target="_blank">
             <img src="assets/map.PNG" alt="" width="100" height="50" style="float: right"><br><br>
-        </a>
+        </a> -->
         
        
         @if(Session::has('success'))
@@ -1953,7 +1953,7 @@
                         <div id="add" style="margin-top: 20px">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title"><b>Add nes</b></h5>
+                                    <h5 class="card-title"><b>Add new</b></h5>
                                     <hr>
                                     <form action="{{ url('/reserve2') }}" method="post" enctype="multipart/form-data">
                                         @csrf
