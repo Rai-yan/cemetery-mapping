@@ -1953,7 +1953,7 @@
                         <div id="add" style="margin-top: 20px">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title"><b>Add new</b></h5>
+                                    <h5 class="card-title"><b>Add Deceased Person</b></h5>
                                     <hr>
                                     <form action="{{ url('/reserve2') }}" method="post" enctype="multipart/form-data">
                                         @csrf
@@ -1975,11 +1975,11 @@
                                         <div class="row">
                                             <div class="col">
                                                 <label for="exampleFormControlInput1" class="form-label">Born date</label>
-                                                <input type="date" name="born_date" class="form-control" id="exampleFormControlInput1" placeholder="Ponze">
+                                                <input type="date" name="born_date" min="1900-01-01" class="form-control" id="exampleFormControlInput1" placeholder="Ponze">
                                             </div>
                                             <div class="col">
                                                 <label for="exampleFormControlInput1" class="form-label">Die date</label>
-                                                <input type="date" name="die_date" class="form-control" id="exampleFormControlInput1" placeholder="Ponze">
+                                                <input type="date" name="die_date" min="1900-01-01" class="form-control" id="exampleFormControlInput1" placeholder="Ponze">
                                             </div>
                                         </div>
                                         
