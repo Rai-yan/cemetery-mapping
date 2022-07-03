@@ -180,7 +180,7 @@
             <div id="box" class="box428" style="text-align: center" onclick="occupied(428)">428</div>
       
         </div>
-        <div style="font-weight: 800; font-size: 19px; top: 80%; color: white; background-color: #808080c2; height: 50px; width: 94%; vertical-align: baseline;">
+        <div style="font-weight: 800; font-size: 19px; top: 80%; color: white; background-color: #808080c2; height: 50px; width: 95%; vertical-align: baseline;">
         Entrance
         <b style="margin-left: 10px; font-size: 30px;">-</b>
         <b style="margin-left: 10px; font-size: 30px;">-</b>
