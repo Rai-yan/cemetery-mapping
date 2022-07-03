@@ -20,17 +20,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body id="background">
-    <a class="btn btn-warning btn-sm" style="color: white" href="{{ route('logout') }}"
+    <!-- <a class="btn btn-warning btn-sm" style="color: white" href="{{ route('logout') }}"
         onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
         {{ __('Logout') }}</a>
     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
         @csrf
-    </form>
+    </form> -->
 
 
 
-    <h5 style="float: right; color: white; font-size: 20px">{{ Auth::user()->email }}</h5>
+    <!-- <h5 style="float: right; color: white; font-size: 20px">{{ Auth::user()->email }}</h5> -->
 
     <div class="container" style="margin-top: 50px">
 
